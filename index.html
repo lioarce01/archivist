@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Multimodal Research Assistant</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Courier+Prime:wght@400;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              serif: ['"Lora"', 'serif'],
+              display: ['"Playfair Display"', 'serif'],
+              mono: ['"Courier Prime"', 'monospace'],
+            },
+            colors: {
+              paper: {
+                50: '#fdfbf7',
+                100: '#f7f3e8',
+                200: '#efeadd', // Main background
+                300: '#e5dec8',
+                400: '#d6cba6', // Borders
+                500: '#6e6046', // Darker metadata text for readability
+                600: '#5c4b37',
+                800: '#2b2118', // Much darker text secondary
+                900: '#120f0c', // Almost black text primary
+              },
+              ink: {
+                red: '#8a2c2c',
+                blue: '#203a6e',
+              }
+            },
+            backgroundImage: {
+              'paper-texture': "url('https://www.transparenttextures.com/patterns/cream-paper.png')",
+            },
+            typography: (theme) => ({
+              DEFAULT: {
+                css: {
+                  color: theme('colors.paper.900'),
+                  fontFamily: theme('fontFamily.serif'),
+                  h1: { fontFamily: theme('fontFamily.display') },
+                  h2: { fontFamily: theme('fontFamily.display') },
+                  h3: { fontFamily: theme('fontFamily.display') },
+                  strong: { color: theme('colors.paper.900'), fontWeight: '700' },
+                  a: { color: theme('colors.ink.blue') },
+                  blockquote: { borderLeftColor: theme('colors.paper.500'), fontStyle: 'italic' },
+                },
+              },
+            }),
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #efeadd;
+        color: #120f0c;
+        font-family: 'Lora', serif;
+      }
+      /* Custom scrollbar to match theme */
+      ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #e5dec8; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #b0a380; 
+        border: 2px solid #e5dec8;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #8c7f62; 
+      }
+      
+      .typing-dot {
+        animation: typing 1.4s infinite ease-in-out both;
+      }
+      .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+      .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+      @keyframes typing {
+        0%, 80%, 100% { transform: scale(0); }
+        40% { transform: scale(1); }
+      }
+
+      /* Markdown specific styles for vintage tables */
+      .prose {
+        color: #120f0c;
+        font-size: 1.05rem; /* Slightly larger base text */
+        line-height: 1.7;
+      }
+      .prose h1, .prose h2, .prose h3, .prose h4 {
+        font-family: 'Playfair Display', serif;
+        color: #120f0c;
+        font-weight: 700;
+      }
+      .prose strong {
+        color: #000000;
+        font-weight: 700;
+      }
+      .prose table {
+        font-size: 0.95rem;
+        border-collapse: collapse;
+        border: 2px solid #2b2118;
+        background-color: #f7f3e8;
+        width: 100%;
+      }
+      .prose th {
+        background-color: #e5dec8;
+        padding: 0.75rem;
+        text-align: left;
+        border: 1px solid #5c4b37;
+        font-family: 'Playfair Display', serif;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: #120f0c;
+      }
+      .prose td {
+        padding: 0.75rem;
+        border: 1px solid #d6cba6;
+        font-family: 'Lora', serif;
+        color: #2b2118;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.31.0",
+    "react-markdown": "https://esm.sh/react-markdown@9?bundle",
+    "remark-gfm": "https://esm.sh/remark-gfm@4?bundle",
+    "d3": "https://esm.sh/d3@7?bundle",
+    "jspdf": "https://esm.sh/jspdf@2.5.1"
+  }
+}
+</script>
+</head>
+  <body class="h-screen w-screen overflow-hidden bg-paper-200">
+    <div id="root" class="h-full w-full"></div>
+  </body>
+</html>

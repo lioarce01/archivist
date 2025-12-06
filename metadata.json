@@ -1,0 +1,5 @@
+{
+  "name": "Copy of Multimodal Research Assistant",
+  "description": "A research assistant that processes documents and images, allowing you to ask complex questions using Gemini 3 Pro with RAG.",
+  "requestFramePermissions": []
+}
